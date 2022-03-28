@@ -19,6 +19,10 @@ public class ChessBoard {
         this.currentColor = currentColor;
     }
 
+    public static ChessBoard createChessBoard() {
+        return new ChessBoard(BoardInitializer.init(), Color.NONE);
+    }
+
     public void move(Position from, Position to) {
         if (!isCurrentColorPiece(from)) {
             throw new IllegalArgumentException(String.format(
@@ -100,5 +104,9 @@ public class ChessBoard {
             return Color.WHITE;
         }
         return Color.BLACK;
+    }
+
+    public void start() {
+        currentColor = Color.WHITE;
     }
 }

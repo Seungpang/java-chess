@@ -5,12 +5,30 @@ import java.util.stream.Collectors;
 
 public class Position {
 
+    private static final Map<String, Position> CACHE = new HashMap<>();
+
     private final File file;
     private final Rank rank;
+
+    static {
+        for (File file : File.orderedValues()) {
+            for (Rank rank : Rank.values()) {
+                CACHE.put(file.name().toLowerCase(Locale.ROOT) + rank.getValue(),
+                    new Position(file, rank));
+            }
+        }
+    }
 
     public Position(File file, Rank rank) {
         this.file = file;
         this.rank = rank;
+    }
+
+    public static Position from(String key) {
+        if (!CACHE.containsKey(key)) {
+            throw new IllegalArgumentException("Position의 범위를 넘어갑니다.");
+        }
+        return CACHE.get(key);
     }
 
     public boolean isVerticalWay(Position other) {

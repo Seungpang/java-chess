@@ -5,7 +5,8 @@ import chess.position.Rank;
 
 public enum Color {
 
-    BLACK(Rank.SEVEN), WHITE(Rank.TWO);
+    BLACK(Rank.SEVEN), WHITE(Rank.TWO)
+    ,NONE(null);
 
     private Rank rankOfStartPawn;
 

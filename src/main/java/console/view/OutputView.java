@@ -1,8 +1,8 @@
 package console.view;
 
+import chess.Score;
 import chess.piece.*;
 import chess.position.*;
-import java.math.BigDecimal;
 import java.util.*;
 
 public class OutputView {
@@ -54,9 +54,9 @@ public class OutputView {
         return PIECE_SYMBOL.get(piece.getClass());
     }
 
-    public static void printScores(BigDecimal whiteScore, BigDecimal blackScore) {
-        System.out.printf("WHITE 점수: %s %n", whiteScore.toPlainString());
-        System.out.printf("BLACK 점수: %s %n", blackScore.toPlainString());
+    public static void printScores(Score score) {
+        System.out.printf("WHITE 점수: %s %n", score.getWhiteScore().toPlainString());
+        System.out.printf("BLACK 점수: %s %n", score.getBlackScore().toPlainString());
     }
 
     public static void printWinner(Color winnerColor) {
